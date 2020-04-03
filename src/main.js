@@ -1,6 +1,6 @@
 "use strict";
 
-const CARDS_MAIN_NUMBER = 5; // количество карточек в основном разделе
+const CARDS_MAIN_LiST_LENGTH = 5; // количество карточек в основном разделе
 
 const siteHeader = document.querySelector(`.header`);
 const siteMainElement = document.querySelector(`.main`);
@@ -9,6 +9,18 @@ const siteMainElement = document.querySelector(`.main`);
 
 const renderTemplate = (container, template, place = `beforeend`) => {
   container.insertAdjacentHTML(place, template);
+};
+
+// функция отрисовки набора карточек
+
+const renderCardsList = (container, listLength) => {
+  renderTemplate(container, createFilmsListContainer());
+  const filmsListContainer = container.querySelector(`.films-list__container`);
+  console.log(filmsListContainer);
+
+  for (let i = 0; i < listLength; i++) {
+    renderTemplate(filmsListContainer, createFilmCard());
+  }
 };
 
 // шаблоны компонентов
@@ -56,6 +68,14 @@ const createFilmsGeneralContainer = () => {
   );
 };
 
+const createFilmsExtraSection = () => {
+  return (
+    `<section class="films-list--extra">
+      <h2 class="films-list__title">Top rated</h2>
+    </section>`
+  );
+};
+
 const createFilmsListContainer = () => {
   return (
     `<div class="films-list__container"></div>`
@@ -97,20 +117,17 @@ renderTemplate(siteMainElement, createSiteNavigation());
 renderTemplate(siteMainElement, createSortingControls());
 renderTemplate(siteMainElement, createFilmsGeneralContainer());
 
-// отрисовка подразделов для контента
+// отрисовка подразделов для карточек фильмов
 
 const filmsGeneralContainer = siteMainElement.querySelector(`.films`);
 const filmsMainSection = filmsGeneralContainer.querySelector(`.films-list`);
 
 renderTemplate(filmsMainSection, createFilmsListContainer());
+renderTemplate(filmsGeneralContainer, createFilmsExtraSection());
 
 // отрисовка карточек фильмов
 
-const filmsListContainer = filmsMainSection.querySelector(`.films-list__container`);
-
-for (let i = 0; i < CARDS_MAIN_NUMBER; i++) {
-  renderTemplate(filmsListContainer, createFilmCard());
-}
+renderCardsList(filmsGeneralContainer, CARDS_MAIN_LiST_LENGTH);
 
 // отрисовка кнопки загрузки
 
