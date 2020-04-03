@@ -1,6 +1,9 @@
 "use strict";
 
 const CARDS_MAIN_LiST_LENGTH = 5; // количество карточек в основном разделе
+const CARDS_EXTRA_LIST_LENGTH = 2; // количество карточек в дополнительных разделах
+const FILMS_EXTRA_SECTIONS_NUMBER = 2; // количество дополнительных разделов с карточками
+const FILMS_EXTRA_SECTIONS_TITLES = [`Top rated`, `Most commented`]; // названия дополнительных разделов
 
 const siteHeader = document.querySelector(`.header`);
 const siteMainElement = document.querySelector(`.main`);
@@ -16,7 +19,6 @@ const renderTemplate = (container, template, place = `beforeend`) => {
 const renderCardsList = (container, listLength) => {
   renderTemplate(container, createFilmsListContainer());
   const filmsListContainer = container.querySelector(`.films-list__container`);
-  console.log(filmsListContainer);
 
   for (let i = 0; i < listLength; i++) {
     renderTemplate(filmsListContainer, createFilmCard());
@@ -68,11 +70,11 @@ const createFilmsGeneralContainer = () => {
   );
 };
 
-const createFilmsExtraSection = () => {
+const createFilmsExtraSectionTemplate =(title) => {
   return (
     `<section class="films-list--extra">
-      <h2 class="films-list__title">Top rated</h2>
-    </section>`
+    <h2 class="films-list__title">${title}</h2>
+  </section>`
   );
 };
 
@@ -117,17 +119,37 @@ renderTemplate(siteMainElement, createSiteNavigation());
 renderTemplate(siteMainElement, createSortingControls());
 renderTemplate(siteMainElement, createFilmsGeneralContainer());
 
-// отрисовка подразделов для карточек фильмов
+// отрисовка дополнительных подразделов для карточек фильмов
 
 const filmsGeneralContainer = siteMainElement.querySelector(`.films`);
-const filmsMainSection = filmsGeneralContainer.querySelector(`.films-list`);
 
-renderTemplate(filmsMainSection, createFilmsListContainer());
-renderTemplate(filmsGeneralContainer, createFilmsExtraSection());
+const createFilmsExtraSections = () => {
+  let templates = [];
+  let sectionTitle = ``;
+  let titleIndex = 0;
+
+  for (let i = 0; i < FILMS_EXTRA_SECTIONS_NUMBER; i++) {
+    sectionTitle = FILMS_EXTRA_SECTIONS_TITLES[titleIndex];
+    templates.push(createFilmsExtraSectionTemplate(sectionTitle));
+    titleIndex++;
+  }
+
+  return templates.join(``);
+};
+
+renderTemplate(filmsGeneralContainer, createFilmsExtraSections());
 
 // отрисовка карточек фильмов
 
-renderCardsList(filmsGeneralContainer, CARDS_MAIN_LiST_LENGTH);
+const filmsMainSection = filmsGeneralContainer.querySelector(`.films-list`);
+
+renderCardsList(filmsMainSection, CARDS_MAIN_LiST_LENGTH);
+
+const filmsExtraSections = filmsGeneralContainer.querySelectorAll(`.films-list--extra`);
+
+filmsExtraSections.forEach((filmsExtraSection) => {
+  renderCardsList(filmsExtraSection, CARDS_EXTRA_LIST_LENGTH);
+});
 
 // отрисовка кнопки загрузки
 
