@@ -21,10 +21,13 @@ const renderTemplate = (container, template, place = `beforeend`) => {
 const renderCardsList = (container, listLength) => {
   renderTemplate(container, createFilmsListContainer());
   const filmsListContainer = container.querySelector(`.films-list__container`);
+  let filmsList = ``;
 
   for (let i = 0; i < listLength; i++) {
-    renderTemplate(filmsListContainer, createFilmCard());
+    filmsList += createFilmCard();
   }
+
+  renderTemplate(filmsListContainer, filmsList);
 };
 
 // шаблоны компонентов
