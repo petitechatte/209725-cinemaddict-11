@@ -84,6 +84,12 @@ const createFilmCard = () => {
   );
 };
 
+const createLoadButton = () => {
+  return (
+    `<button class="films-list__show-more">Show more</button>`
+  );
+};
+
 // отрисовка основных разделов сайта
 
 renderTemplate(siteHeader, createUserProfile());
@@ -105,3 +111,7 @@ const filmsListContainer = filmsMainSection.querySelector(`.films-list__containe
 for (let i = 0; i < CARDS_MAIN_NUMBER; i++) {
   renderTemplate(filmsListContainer, createFilmCard());
 }
+
+// отрисовка кнопки загрузки
+
+renderTemplate(filmsMainSection, createLoadButton());
