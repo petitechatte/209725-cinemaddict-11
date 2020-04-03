@@ -7,6 +7,7 @@ const FILMS_EXTRA_SECTIONS_TITLES = [`Top rated`, `Most commented`]; // назв
 
 const siteHeader = document.querySelector(`.header`);
 const siteMainElement = document.querySelector(`.main`);
+const footerStatistics = document.querySelector(`.footer__statistics`);
 
 // функция отрисовки шаблона
 
@@ -112,6 +113,12 @@ const createLoadButton = () => {
   );
 };
 
+const createTotalFilmsCount = () => {
+  return (
+    `<p>130 291 movies inside</p>`
+  );
+};
+
 // отрисовка основных разделов сайта
 
 renderTemplate(siteHeader, createUserProfile());
@@ -154,3 +161,7 @@ filmsExtraSections.forEach((filmsExtraSection) => {
 // отрисовка кнопки загрузки
 
 renderTemplate(filmsMainSection, createLoadButton());
+
+// отрисовка статистики в подвале
+
+renderTemplate(footerStatistics, createTotalFilmsCount());
