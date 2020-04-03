@@ -306,17 +306,17 @@ renderTemplate(siteMainElement, createFilmsGeneralContainer());
 const filmsGeneralContainer = siteMainElement.querySelector(`.films`);
 
 const createFilmsExtraSections = () => {
-  let templates = [];
+  let templates = ``;
   let sectionTitle = ``;
   let titleIndex = 0;
 
   for (let i = 0; i < FILMS_EXTRA_SECTIONS_NUMBER; i++) {
     sectionTitle = FILMS_EXTRA_SECTIONS_TITLES[titleIndex];
-    templates.push(createFilmsExtraSectionTemplate(sectionTitle));
+    templates += createFilmsExtraSectionTemplate(sectionTitle);
     titleIndex++;
   }
 
-  return templates.join(``);
+  return templates;
 };
 
 renderTemplate(filmsGeneralContainer, createFilmsExtraSections());
