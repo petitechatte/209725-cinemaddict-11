@@ -19,13 +19,15 @@ const renderTemplate = (container, template, place = `beforeend`) => {
 // функция отрисовки набора карточек
 
 const renderCardsList = (container, listLength) => {
-  renderTemplate(container, createFilmsListContainer());
-  const filmsListContainer = container.querySelector(`.films-list__container`);
   let filmsList = ``;
 
   for (let i = 0; i < listLength; i++) {
     filmsList += createFilmCard();
   }
+
+  renderTemplate(container, createFilmsListContainer());
+
+  const filmsListContainer = container.querySelector(`.films-list__container`);
 
   renderTemplate(filmsListContainer, filmsList);
 };
@@ -78,8 +80,8 @@ const createFilmsGeneralContainer = () => {
 const createFilmsExtraSectionTemplate =(title) => {
   return (
     `<section class="films-list--extra">
-    <h2 class="films-list__title">${title}</h2>
-  </section>`
+      <h2 class="films-list__title">${title}</h2>
+    </section>`
   );
 };
 
@@ -327,10 +329,9 @@ renderTemplate(filmsGeneralContainer, createFilmsExtraSections());
 // отрисовка карточек фильмов
 
 const filmsMainSection = filmsGeneralContainer.querySelector(`.films-list`);
+const filmsExtraSections = filmsGeneralContainer.querySelectorAll(`.films-list--extra`);
 
 renderCardsList(filmsMainSection, CARDS_MAIN_LiST_LENGTH);
-
-const filmsExtraSections = filmsGeneralContainer.querySelectorAll(`.films-list--extra`);
 
 filmsExtraSections.forEach((filmsExtraSection) => {
   renderCardsList(filmsExtraSection, CARDS_EXTRA_LIST_LENGTH);
