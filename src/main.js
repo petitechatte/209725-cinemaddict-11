@@ -1,6 +1,6 @@
 "use strict";
 
-const CARDS_MAIN_LiST_LENGTH = 5; // количество карточек в основном разделе
+const CARDS_MAIN_LIST_LENGTH = 5; // количество карточек в основном разделе
 const CARDS_EXTRA_LIST_LENGTH = 2; // количество карточек в дополнительных разделах
 const FILMS_EXTRA_SECTIONS_NUMBER = 2; // количество дополнительных разделов с карточками
 const FILMS_EXTRA_SECTIONS_TITLES = [`Top rated`, `Most commented`]; // названия дополнительных разделов
@@ -77,7 +77,7 @@ const createFilmsGeneralContainer = () => {
   );
 };
 
-const createFilmsExtraSectionTemplate =(title) => {
+const createFilmsExtraSectionTemplate = (title) => {
   return (
     `<section class="films-list--extra">
       <h2 class="films-list__title">${title}</h2>
