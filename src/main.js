@@ -1,4 +1,4 @@
-"use strict";
+import {createUserProfile} from "./components/user-profile.js";
 
 const CARDS_MAIN_LIST_LENGTH = 5; // количество карточек в основном разделе
 const CARDS_EXTRA_LIST_LENGTH = 2; // количество карточек в дополнительных разделах
@@ -33,15 +33,6 @@ const renderCardsList = (container, listLength) => {
 };
 
 // шаблоны компонентов
-
-const createUserProfile = () => {
-  return (
-    `<section class="header__profile profile">
-      <p class="profile__rating">Movie Buff</p>
-      <img class="profile__avatar" src="images/bitmap@2x.png" alt="Avatar" width="35" height="35">
-    </section>`
-  );
-};
 
 const createSiteNavigation = () => {
   return (
