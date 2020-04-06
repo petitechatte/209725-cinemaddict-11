@@ -3,6 +3,7 @@ import {createSiteNavigation} from "./components/navigation.js";
 import {createSortingControls} from "./components/sorting.js";
 import {createFilmsGeneralContainer} from "./components/content-container.js";
 import {createFilmsExtraSectionTemplate} from "./components/extra-section.js";
+import {createFilmsListContainer} from "./components/films-container.js";
 
 const CARDS_MAIN_LIST_LENGTH = 5; // количество карточек в основном разделе
 const CARDS_EXTRA_LIST_LENGTH = 2; // количество карточек в дополнительных разделах
@@ -37,12 +38,6 @@ const renderCardsList = (container, listLength) => {
 };
 
 // шаблоны компонентов
-
-const createFilmsListContainer = () => {
-  return (
-    `<div class="films-list__container"></div>`
-  );
-};
 
 const createFilmCard = () => {
   return (
