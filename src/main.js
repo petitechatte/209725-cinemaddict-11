@@ -2,6 +2,7 @@ import {createUserProfile} from "./components/user-profile.js";
 import {createSiteNavigation} from "./components/navigation.js";
 import {createSortingControls} from "./components/sorting.js";
 import {createFilmsGeneralContainer} from "./components/content-container.js";
+import {createFilmsExtraSectionTemplate} from "./components/extra-section.js";
 
 const CARDS_MAIN_LIST_LENGTH = 5; // количество карточек в основном разделе
 const CARDS_EXTRA_LIST_LENGTH = 2; // количество карточек в дополнительных разделах
@@ -36,14 +37,6 @@ const renderCardsList = (container, listLength) => {
 };
 
 // шаблоны компонентов
-
-const createFilmsExtraSectionTemplate = (title) => {
-  return (
-    `<section class="films-list--extra">
-      <h2 class="films-list__title">${title}</h2>
-    </section>`
-  );
-};
 
 const createFilmsListContainer = () => {
   return (
