@@ -5,6 +5,7 @@ import {createFilmsGeneralContainer} from "./components/content-container.js";
 import {createFilmsExtraSectionTemplate} from "./components/extra-section.js";
 import {createFilmsListContainer} from "./components/films-container.js";
 import {createFilmCard} from "./components/card.js";
+import {createLoadButton} from "./components/load-button.js";
 
 const CARDS_MAIN_LIST_LENGTH = 5; // количество карточек в основном разделе
 const CARDS_EXTRA_LIST_LENGTH = 2; // количество карточек в дополнительных разделах
@@ -39,12 +40,6 @@ const renderCardsList = (container, listLength) => {
 };
 
 // шаблоны компонентов
-
-const createLoadButton = () => {
-  return (
-    `<button class="films-list__show-more">Show more</button>`
-  );
-};
 
 const createTotalFilmsCount = () => {
   return (
