@@ -1,5 +1,6 @@
 import {createUserProfile} from "./components/user-profile.js";
 import {createSiteNavigation} from "./components/navigation.js";
+import {createSortingControls} from "./components/sorting.js";
 
 const CARDS_MAIN_LIST_LENGTH = 5; // количество карточек в основном разделе
 const CARDS_EXTRA_LIST_LENGTH = 2; // количество карточек в дополнительных разделах
@@ -34,16 +35,6 @@ const renderCardsList = (container, listLength) => {
 };
 
 // шаблоны компонентов
-
-const createSortingControls = () => {
-  return (
-    `<ul class="sort">
-      <li><a href="#" class="sort__button sort__button--active">Sort by default</a></li>
-      <li><a href="#" class="sort__button">Sort by date</a></li>
-      <li><a href="#" class="sort__button">Sort by rating</a></li>
-    </ul>`
-  );
-};
 
 const createFilmsGeneralContainer = () => {
   return (
